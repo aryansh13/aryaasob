@@ -4,8 +4,6 @@ import Welcome from "./components/home";
 import Experience from "./components/experience";
 import About from "./components/about";
 import Projects from "./components/projects";
-import FractalTree from "./components/fractalTree";
-
 
 
 export default function Home() {
@@ -13,7 +11,6 @@ export default function Home() {
     <div>
       <Navbar />
       <main className="min-h-screen items-center justify-center p-24 mx-10">
-        <FractalTree/>
         <Welcome/>
         <About/>
         <Experience/>
