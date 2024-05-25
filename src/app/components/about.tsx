@@ -22,7 +22,7 @@ export default function about() {
             program called
             <span className="font-bold"> MSIB Batch 6 2024</span>. At the same
             time, I&apos;m pursuing a
-            <span className="font-bold"> Bachelor&apos;s Degree </span> in
+            <span className="font-bold"> Bachelor&apos;s Degree </span> in {" "}
             <span className="font-bold">Computer Engineering Technology</span> {" "}
             at {" "}
             <span className="text-green-light font-bold">
