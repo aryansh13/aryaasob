@@ -1,5 +1,4 @@
 "use client"
-
 import React from 'react';
 import { HoverEffect } from "./ui/card-hover-effect";
 import { SiGithub, SiLinkedin, SiCarrd } from "react-icons/si";
@@ -63,12 +62,12 @@ export default function projects() {
     },
   ];
 
-  const { ref: projectsRef, inView: projectsInView } = useInView({
+  const { ref: ProjectsRef, inView: ProjectsInView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
     });
   return (
-    <div id="projects" ref={projectsRef} className={`projects-section flex flex-col p-4 mt-6 ml-20 ${projectsInView ? "animate-fade-up animate-duration-1500" : "opacity-0"}`}>
+    <div id="projects" ref={ProjectsRef} className={`projects-section flex flex-col p-4 mt-6 ml-20 ${ProjectsInView ? "animate-fade-up animate-duration-1500" : "opacity-0"}`}>
         <div className="flex mt-8">
             <h1 className="text-5xl text-light font-bold">/ pet projects</h1>
             <span className="lines w-1/4 ml-6 border-t-2 border-dark-gray mt-11"></span>
