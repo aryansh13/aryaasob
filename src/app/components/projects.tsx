@@ -4,7 +4,7 @@ import { HoverEffect } from "./ui/card-hover-effect";
 import { SiGithub, SiLinkedin, SiCarrd } from "react-icons/si";
 import { useInView } from "react-intersection-observer";
 
-export default function projects() {
+export default function Projects() {
   const projects = [
     {
       title: 'Movlix',
