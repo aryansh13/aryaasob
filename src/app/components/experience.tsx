@@ -31,7 +31,7 @@ export default function Experience() {
 
     return (
         <div id="experience" ref={experienceRef} className={`about-section flex flex-col p-4 mt-5 ml-20 ${
-            experienceInView ? "animate-fade-up animate-duration-1000" : "opacity-0"
+            experienceInView ? "animate-fade-up animate-duration-1500" : "opacity-0"
           }`}>
             <div className="flex mt-8">
                 <h1 className="text-5xl text-light font-bold">/ experience</h1>
@@ -65,7 +65,7 @@ export default function Experience() {
                                 {section.details.map((detail, index) => (
                                     <div key={index} className="mt-5 flex flex-row">
                                         <span className="text-green-light mt-0.5 list-detail">▹</span>
-                                        <p className={`text-light-gray ml-4 mr-8 text-lg details ${experienceInView ? 'animate-fade-up animate-duration-1000 animate-delay-2000' : 'opacity-0'} `}>{detail}</p>
+                                        <p className={`text-light-gray ml-4 mr-8 text-lg details ${experienceInView ? 'animate-fade-up animate-duration-2000 animate-delay-2500' : 'opacity-0'} `}>{detail}</p>
                                     </div>
                                 ))}
                             </div>
