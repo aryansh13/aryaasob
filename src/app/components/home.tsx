@@ -25,7 +25,7 @@ export default function Welcome() {
           className="type-effect text-center text-7xl text-light ml-4"
         />
       </div>
-      <div className="pt-0 mt-0">
+      <div className="pt-0 mt-0 animate-fade-up animate-duration-1000 animate-delay-500">
         <h1 className="text-center text-5xl text-light-gray">
           I create stuff sometimes.
         </h1>

@@ -1,10 +1,22 @@
+"use client"
 import React from "react";
 import Image from "next/image";
-/* eslint-enable react/no-unescaped-entities */
+import { useInView } from "react-intersection-observer";
 
-export default function about() {
+export default function About() {
+  const { ref: aboutRef, inView: aboutInView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
   return (
-    <div id="about" className="about-section flex flex-col p-4 mt-5 ml-20">
+    <div
+      id="about"
+      ref={aboutRef}
+      className={`about-section flex flex-col p-4 mt-5 ml-20 ${
+        aboutInView ? "animate-fade-up animate-duration-1000" : "opacity-0"
+      }`}
+    >
       <div className="flex mt-8">
         <h1 className="text-5xl text-light font-bold">/ about me</h1>
         <span className="lines w-1/4 ml-6 border-t-2 border-dark-gray mt-11"></span>
@@ -14,7 +26,7 @@ export default function about() {
           <p>
             I&apos;m currently a
             <span className="font-bold"> FullStack Developer Intern </span>
-            at {" "}
+            at{" "}
             <span className="text-green-light font-bold">
               PT. Baracipta Esa Engineering
             </span>
@@ -22,9 +34,9 @@ export default function about() {
             program called
             <span className="font-bold"> MSIB Batch 6 2024</span>. At the same
             time, I&apos;m pursuing a
-            <span className="font-bold"> Bachelor&apos;s Degree </span> in {" "}
-            <span className="font-bold">Computer Engineering Technology</span> {" "}
-            at {" "}
+            <span className="font-bold"> Bachelor&apos;s Degree </span> in{" "}
+            <span className="font-bold">Computer Engineering Technology</span>{" "}
+            at{" "}
             <span className="text-green-light font-bold">
               Semarang State Polytechnic
             </span>
@@ -35,7 +47,7 @@ export default function about() {
               Here are some technologies I have been working with:
             </p>
             <div className="grid grid-cols-3 mt-3 technology-list">
-              <ul className="list-none text-lg">
+              <ul className={`list-none text-lg ${aboutInView ? 'animate-fade-up animate-duration-1000 animate-delay-2000' : 'opacity-0'}`}>
                 <li>
                   <span className="text-green-light">▹</span> Typescript
                 </li>
@@ -46,7 +58,7 @@ export default function about() {
                   <span className="text-green-light">▹</span> Next.Js
                 </li>
               </ul>
-              <ul className="list-none text-lg">
+              <ul className={`list-none text-lg ${aboutInView ? 'animate-fade-up animate-duration-1000 animate-delay-1000' : 'opacity-0'}`}>
                 <li>
                   <span className="text-green-light">▹</span> PHP
                 </li>
@@ -57,7 +69,7 @@ export default function about() {
                   <span className="text-green-light">▹</span> React.Js
                 </li>
               </ul>
-              <ul className="list-none text-lg">
+              <ul className={`list-none text-lg ${aboutInView ? 'animate-fade-up animate-duration-1000 animate-delay-1000' : 'opacity-0'}`}>
                 <li>
                   <span className="text-green-light">▹</span> MySql
                 </li>
@@ -86,4 +98,3 @@ export default function about() {
     </div>
   );
 }
-/* eslint-enable react/no-unescaped-entities */

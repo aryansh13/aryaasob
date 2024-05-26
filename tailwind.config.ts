@@ -50,6 +50,8 @@ const config: Config = {
       "7xl": "86px",
     },
   },
-  plugins: [],
+  plugins: [
+    require('tailwindcss-animated')
+  ],
 };
 export default config;

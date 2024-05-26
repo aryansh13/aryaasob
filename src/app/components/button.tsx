@@ -15,7 +15,7 @@ export default function button() {
 return (
     <Link
         href={"mailto:akunto21@gmail.com"}
-        className="flex bg-dark hover:bg-light-gray text-green-light font-bold py-4 px-7 rounded border border-green-light mt-8 button"
+        className="flex bg-dark hover:bg-light-gray text-green-light font-bold py-4 px-7 rounded border border-green-light mt-8 button animate-fade-up animate-delay-500 animate-once"
     >
         {socials.map((social, index) => {
             const Icon = social.Icon;

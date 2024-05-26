@@ -1,5 +1,6 @@
 'use client'
 import React, { useState } from "react";
+import { useInView } from "react-intersection-observer";
 
 export default function Experience() {
     const [activeSection, setActiveSection] = useState("ECC.CO.ID");
@@ -23,8 +24,15 @@ export default function Experience() {
         ] }
     ];
 
+    const { ref: experienceRef, inView: experienceInView } = useInView({
+        triggerOnce: true,
+        threshold: 0.1,
+        });
+
     return (
-        <div id="experience" className="experience-section flex flex-col p-4 mt-6 ml-20">
+        <div id="experience" ref={experienceRef} className={`about-section flex flex-col p-4 mt-5 ml-20 ${
+            experienceInView ? "animate-fade-up animate-duration-1000" : "opacity-0"
+          }`}>
             <div className="flex mt-8">
                 <h1 className="text-5xl text-light font-bold">/ experience</h1>
                 <span className="lines w-1/4 ml-6 border-t-2 border-dark-gray mt-11"></span>
@@ -57,7 +65,7 @@ export default function Experience() {
                                 {section.details.map((detail, index) => (
                                     <div key={index} className="mt-5 flex flex-row">
                                         <span className="text-green-light mt-0.5 list-detail">▹</span>
-                                        <p className="text-light-gray ml-4 mr-8 text-lg details">{detail}</p>
+                                        <p className={`text-light-gray ml-4 mr-8 text-lg details ${experienceInView ? 'animate-fade-up animate-duration-1000 animate-delay-2000' : 'opacity-0'} `}>{detail}</p>
                                     </div>
                                 ))}
                             </div>
