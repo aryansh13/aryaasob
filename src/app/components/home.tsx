@@ -30,7 +30,7 @@ export default function Welcome() {
           I create stuff sometimes.
         </h1>
         <p className="text-center text-2xl text-light-gray mx-40">
-          I&apos;m a front-end web developer from Brebes, Indonesia. I&apos;ve worked
+          I&apos;m a fullstack web developer from Brebes, Indonesia. I&apos;ve worked
           on various front-end projects, including user interfaces and web
           designs. Additionally, I have experience in developing back-end
           systems such as RESTful APIs, databases, and web microservices.
