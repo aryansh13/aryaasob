@@ -32,7 +32,16 @@ body {
   }
 }
 
-@media only screen and (max-width: 600px) {
+footer {
+  margin-top: 20px;
+}
+
+.footer-text {
+  font-size: small;
+}
+
+/* The media queries below are kept for reference but are now handled by Tailwind responsive classes */
+/* @media only screen and (max-width: 600px) {
   .fractal {
     margin-left: 235px;
   }
@@ -82,8 +91,6 @@ body {
     margin-right: -100px;
   }
 
-
-
   .button {
     flex-direction: row;
     padding: 0.5rem 1rem;
@@ -121,10 +128,6 @@ body {
   .about-main {
     grid-template-columns: 2fr;
   }
-
-  /* .about-main > div {
-    margin-bottom: 1rem;
-  } */
 
   .technology-list {
     grid-column: 3 / 3;
@@ -249,82 +252,4 @@ body {
     margin-top: 15px;
     margin-bottom: 30px;
   }
-
-  footer {
-    margin-right: -200px;
-    margin-left: 110px;
-    
-  }
-  
-  .footer-text {
-    font-size: 1.75rem;
-  }
-}
-
-/* @media only screen and (max-width: 700px), (max-width: 800px) {
-  .main-text {
-    text-align: center;
-    
-  }
-
-  .main-text .name-title h1 {
-    font-size: 3rem;
-    margin-left: -100px;
-    margin-right: -100px;
-  }
-
-  .main-text .name-title h1 span {
-    font-size: 3rem;
-  }
-
-  .main-text h1 {
-    font-size: 1.7rem; 
-    margin-left: -65px;
-    margin-right: -65px;
-  }
-
-  .main-text p {
-    font-size: 1rem; 
-    margin-left: -69px;
-    margin-right: -69px;
-  }
-
-  .about-section {
-    margin-left: -20px;
-  }
-
-  .about-section h1 {
-    font-size: 1.7rem;
-    margin-left: -65px;
-    margin-right: -65px;
-  }
-
-  .about-section p {
-    font-size: 1rem; 
-    margin-left: -69px;
-    margin-right: -69px;
-  }
-
-  .lines {
-    display: none;
-  }
-
-  .about-main {
-    grid-template-columns: 1fr;
-  }
-
-  .about-main > div {
-    margin-bottom: 1rem;
-  }
-
-  .technology-list {
-    margin-left: -70px;
-  }
-
-  .about-image {
-    margin-top: 2rem;
-    width: 200%;
-  }
-}
-
- */
+} */

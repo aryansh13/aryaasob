@@ -67,10 +67,10 @@ export default function Projects() {
     threshold: 0.1,
     });
   return (
-    <div id="projects" ref={ProjectsRef} className={`projects-section flex flex-col p-4 mt-6 ml-20 ${ProjectsInView ? "animate-fade-up animate-duration-1500" : "opacity-0"}`}>
-        <div className="flex mt-8">
-            <h1 className="text-5xl text-light font-bold">/ pet projects</h1>
-            <span className="lines w-1/4 ml-6 border-t-2 border-dark-gray mt-11"></span>
+    <div id="projects" ref={ProjectsRef} className={`projects-section flex flex-col p-4 my-12 md:my-20 ${ProjectsInView ? "animate-fade-up animate-duration-1500" : "opacity-0"}`}>
+        <div className="flex flex-wrap items-center mb-8">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl text-light font-bold">/ pet projects</h1>
+            <span className="lines hidden md:block w-1/4 ml-6 border-t-2 border-dark-gray mt-4"></span>
         </div>
         <HoverEffect items={projects} />
     </div>

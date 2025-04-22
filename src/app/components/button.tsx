@@ -15,15 +15,15 @@ export default function button() {
 return (
     <Link
         href={"mailto:akunto21@gmail.com"}
-        className="flex bg-dark hover:bg-light-gray text-green-light font-bold py-4 px-7 rounded border border-green-light mt-8 button animate-fade-up animate-delay-500 animate-once"
+        className="flex items-center bg-dark hover:bg-light-gray text-green-light font-bold py-2 sm:py-3 md:py-4 px-4 sm:px-5 md:px-7 rounded border border-green-light mt-6 md:mt-8 button animate-fade-up animate-delay-500 animate-once"
     >
         {socials.map((social, index) => {
             const Icon = social.Icon;
         return (
-                <Icon className="text-2xl mt-1 mr-3" key={index} aria-label={social.Label} />
+                <Icon className="text-xl sm:text-2xl mr-2 sm:mr-3" key={index} aria-label={social.Label} />
         );
         })}
-        <span className="text-2xl">Say hi!</span>
+        <span className="text-lg sm:text-xl md:text-2xl">Say hi!</span>
     </Link>
     );
 }

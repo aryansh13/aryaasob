@@ -30,42 +30,44 @@ export default function Experience() {
         });
 
     return (
-        <div id="experience" ref={experienceRef} className={`about-section flex flex-col p-4 mt-5 ml-20 ${
+        <div id="experience" ref={experienceRef} className={`experience-section flex flex-col p-4 my-12 md:my-20 ${
             experienceInView ? "animate-fade-up animate-duration-1500" : "opacity-0"
           }`}>
-            <div className="flex mt-8">
-                <h1 className="text-5xl text-light font-bold">/ experience</h1>
-                <span className="lines w-1/4 ml-6 border-t-2 border-dark-gray mt-11"></span>
+            <div className="flex flex-wrap items-center mb-8">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl text-light font-bold">/ experience</h1>
+                <span className="lines hidden md:block w-1/4 ml-6 border-t-2 border-dark-gray mt-4"></span>
             </div>
-            <div className="flex mt-12 side-bar">
-                <div className="flex flex-col gap-2 text-light-gray side-name">
+            <div className="flex flex-col md:flex-row mt-6 md:mt-12 side-bar">
+                <div className="flex flex-row md:flex-col gap-2 overflow-x-auto md:overflow-visible text-light-gray side-name mb-6 md:mb-0">
                     {sections.map((section, index) => (
                         <div
                             key={section.id}
-                            className={`square-section p-3 cursor-pointer transition duration-600 ${
-                                activeSection === section.id ? "lines-bottom border-r-2 text-green-light border-green-light" : ""
+                            className={`square-section p-2 md:p-3 cursor-pointer transition duration-600 whitespace-nowrap md:whitespace-normal text-sm sm:text-base ${
+                                activeSection === section.id ? 
+                                "border-b-2 md:border-b-0 md:border-r-2 text-green-light border-green-light" : 
+                                "text-light-gray"
                             }`}
                             onClick={() => setActiveSection(section.id)}
                             data-number={index + 1}
                         >
-                            <span className={`text-base uppercase ${section.id === "ECC.CO.ID" ? "mr-32" : ""}`}>{section.name}</span>
+                            <span className="uppercase">{section.name}</span>
                         </div>
                     ))}
                 </div>
-                <div className="ml-14 experience-details">
+                <div className="md:ml-8 lg:ml-14 experience-details">
                     {sections
                         .filter((section) => section.id === activeSection)
                         .map((section) => (
-                            <div key={section.id} className="-mt-2">
-                                <h1 className="text-3xl font-bold">
+                            <div key={section.id} className="mt-2 md:mt-0">
+                                <h1 className="text-xl sm:text-2xl md:text-3xl font-bold">
                                     {section.content}{" "}
                                     <span className="text-green-light">{section.name}</span>
                                 </h1>
-                                <span className="text-light-gray text-lg uppercase date-range">{section.date}</span>
+                                <span className="block text-light-gray text-sm sm:text-base md:text-lg uppercase date-range mb-4">{section.date}</span>
                                 {section.details.map((detail, index) => (
-                                    <div key={index} className="mt-5 flex flex-row">
-                                        <span className="text-green-light mt-0.5 list-detail">▹</span>
-                                        <p className={`text-light-gray ml-4 mr-8 text-lg details ${experienceInView ? 'animate-fade-up animate-duration-2000 animate-delay-2500' : 'opacity-0'} `}>{detail}</p>
+                                    <div key={index} className="mt-3 md:mt-5 flex flex-row">
+                                        <span className="text-green-light mt-0.5 hidden md:block">▹</span>
+                                        <p className={`text-light-gray md:ml-4 mr-4 md:mr-8 text-sm sm:text-base md:text-lg details ${experienceInView ? 'animate-fade-up animate-duration-2000 animate-delay-2500' : 'opacity-0'} `}>{detail}</p>
                                     </div>
                                 ))}
                             </div>

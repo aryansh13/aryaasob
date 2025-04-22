@@ -18,18 +18,18 @@ export default function Welcome() {
   ];
 
   return (
-    <div id="home" className="main-text flex flex-col items-center p-4">
-      <div className="name-title pb-0 mb-0 mx-11 mt-5">
+    <div id="home" className="flex flex-col items-center py-8 md:py-16 w-full">
+      <div className="name-title mb-4">
         <TypewriterEffectSmooth
           words={words}
-          className="type-effect text-center text-7xl text-light ml-4"
+          className="type-effect text-center text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-light"
         />
       </div>
-      <div className="pt-0 mt-0 animate-fade-up animate-duration-1000 animate-delay-500">
-        <h1 className="text-center text-5xl text-light-gray">
+      <div className="animate-fade-up animate-duration-1000 animate-delay-500 px-4 sm:px-8 md:px-12 lg:px-24 max-w-4xl">
+        <h1 className="text-center text-3xl sm:text-4xl md:text-5xl text-light-gray mb-4">
           I create stuff sometimes.
         </h1>
-        <p className="text-center text-2xl text-light-gray mx-40">
+        <p className="text-center text-lg sm:text-xl md:text-2xl text-light-gray">
           I&apos;m a fullstack web developer from Brebes, Indonesia. I&apos;ve worked
           on various front-end projects, including user interfaces and web
           designs. Additionally, I have experience in developing back-end

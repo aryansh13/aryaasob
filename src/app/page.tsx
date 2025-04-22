@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <div>
       <Navbar />
-      <main className="min-h-screen items-center justify-center p-24 mx-10">
+      <main className="min-h-screen items-center justify-center px-4 sm:px-8 md:px-16 lg:px-24 mx-auto max-w-7xl">
         <Welcome/>
         <About/>
         <Experience/>

@@ -2,9 +2,11 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { SiMinutemailer, SiGithub, SiLinkedin, SiInstagram } from "react-icons/si";
-import { Label } from '@headlessui/react';
+import { HiMenu, HiX } from "react-icons/hi";
 
 export default function Navbar() {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const socials = [
     {
@@ -27,9 +29,7 @@ export default function Navbar() {
       Label: "Instagram",
       Icon: SiInstagram,
     },
-  ]
-
-  const [isScrolled, setIsScrolled] = useState(false);
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -46,30 +46,41 @@ export default function Navbar() {
     };
   }, []);
 
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
   return (
-    <div className={`navbar sticky top-0 flex px-5 py-1 items-center z-[100] ${isScrolled ? 'shadow-md' : ''} transition-shadow bg-dark`}>
-      <div className="flex font-bold ml-6 p-2 navbar-section">
-        <Link className="text-xl ml-4" href={"/"}>Arya As</Link>
-        <div className="flex space-x-160 p-1">
-          <div className="ml-6 space-x-4">
-            <a href='#home' className='hover:text-green-light'>Home</a>
-            <a href='#about' className='hover:text-green-light'>About</a>
-            <a href='#experience' className='hover:text-green-light'>Experience</a>
-            <a href='#projects' className='hover:text-green-light'>Projects</a>
-          </div>
+    <div className={`navbar sticky top-0 flex flex-wrap px-4 py-3 items-center z-[100] ${isScrolled ? 'shadow-md' : ''} transition-shadow bg-dark`}>
+      <div className="flex items-center justify-between w-full lg:w-auto">
+        <Link className="text-xl font-bold" href={"/"}>Arya As</Link>
+        <button
+          className="lg:hidden text-light hover:text-green-light"
+          onClick={toggleMobileMenu}
+          aria-label="Toggle menu"
+        >
+          {mobileMenuOpen ? <HiX className="text-2xl" /> : <HiMenu className="text-2xl" />}
+        </button>
+      </div>
+
+      <div className={`${mobileMenuOpen ? 'flex' : 'hidden'} lg:flex flex-col lg:flex-row w-full lg:w-auto lg:ml-6 mt-4 lg:mt-0`}>
+        <div className="flex flex-col lg:flex-row space-y-2 lg:space-y-0 lg:space-x-4 font-semibold">
+          <a href='#home' className='hover:text-green-light' onClick={() => setMobileMenuOpen(false)}>Home</a>
+          <a href='#about' className='hover:text-green-light' onClick={() => setMobileMenuOpen(false)}>About</a>
+          <a href='#experience' className='hover:text-green-light' onClick={() => setMobileMenuOpen(false)}>Experience</a>
+          <a href='#projects' className='hover:text-green-light' onClick={() => setMobileMenuOpen(false)}>Projects</a>
         </div>
       </div>
-      <div className="flex ml-auto mr-10 space-x-4 navbar-icon">
-        {socials.map((social, index) => {
 
+      <div className={`${mobileMenuOpen ? 'flex' : 'hidden'} lg:flex lg:ml-auto mt-4 lg:mt-0 space-x-4 navbar-icon`}>
+        {socials.map((social, index) => {
           const Icon = social.Icon;
           return (
             <Link href={social.Link} key={index} aria-label={social.Label}>
               <Icon className='text-xl hover:text-green-light icon'/>
             </Link>
           )
-        })
-        }
+        })}
       </div>
     </div>
   );
