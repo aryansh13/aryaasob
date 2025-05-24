@@ -3,16 +3,14 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --foreground-rgb: 248, 250, 252;
+  --background-start-rgb: 15, 23, 42;
+  --background-end-rgb: 15, 23, 42;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 204,214,246;
-    --background-start-rgb: 10,25,47;
-    --background-end-rgb: 10,25,47;
+@layer base {
+  html {
+    scroll-behavior: smooth;
   }
 }
 
@@ -30,14 +28,52 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+  
+  .bg-gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary animate-gradient bg-300%;
+  }
+  
+  .bg-300\% {
+    background-size: 300% 300%;
+  }
+  
+  .section-heading {
+    @apply text-3xl sm:text-4xl md:text-5xl font-bold mb-6 md:mb-8 relative inline-block;
+  }
+  
+  .section-heading::after {
+    content: '';
+    @apply absolute -bottom-2 left-0 w-1/2 h-1 bg-secondary rounded-full;
+  }
+  
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-1;
+  }
+  
+  .nav-link {
+    @apply relative px-3 py-2 transition-colors duration-300 hover:text-primary-light;
+  }
+  
+  .nav-link::after {
+    content: '';
+    @apply absolute left-0 -bottom-1 w-0 h-0.5 bg-secondary transition-all duration-300;
+  }
+  
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+  
+  .social-icon {
+    @apply text-xl hover:text-primary-light transition-colors duration-300 hover:scale-110;
+  }
 }
 
 footer {
-  margin-top: 20px;
+  @apply py-6 border-t border-dark-light/30;
 }
 
 .footer-text {
-  font-size: small;
+  @apply text-sm;
 }
 
 /* The media queries below are kept for reference but are now handled by Tailwind responsive classes */

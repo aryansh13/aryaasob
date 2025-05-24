@@ -22,54 +22,90 @@ export const HoverEffect = ({
   return (
     <div
       className={cn(
-        "card-project grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 py-6 sm:py-10",
+        "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5",
         className
       )}
     >
       {items.map((item, idx) => (
-        <Link
-          href={item?.link}
-          key={item?.link}
-          className="relative group block p-2 h-full w-full"
-          onMouseEnter={() => setHoveredIndex(idx)}
-          onMouseLeave={() => setHoveredIndex(null)}
+        <motion.div
+          key={idx}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ 
+            duration: 0.4,
+            delay: idx * 0.1,
+          }}
         >
-          <AnimatePresence>
-            {hoveredIndex === idx && (
-              <motion.span
-                className="absolute inset-0 h-full w-full bg-neutral-200 dark:bg-green-light/[0.2] block rounded-3xl"
-                layoutId="hoverBackground"
-                initial={{ opacity: 0 }}
-                animate={{
-                  opacity: 1,
-                  transition: { duration: 0.15 },
-                }}
-                exit={{
-                  opacity: 0,
-                  transition: { duration: 0.15, delay: 0.2 },
-                }}
-              />
-            )}
-          </AnimatePresence>
-          <Card>
-              <div className="card-icon flex text-xl sm:text-2xl -mt-2 justify-between">
-                <div className="text-green-light">
-                  {item.Icon2 && <item.Icon2 />}
-                </div>
-                <div>
-                  {item.Icon1 && <item.Icon1/>}
-                </div>
-              </div>
-              <hr className="mt-3 border-gray-700" />
-              <CardTitle className="mt-4 sm:mt-8">{item.title}</CardTitle>
-            <CardDescription className="mt-2">{item.description}</CardDescription>
-            {item.technologies && (
-              <div className="card-techno mt-4 sm:mt-8 text-xs sm:text-sm text-light-gray">
-                 {item.technologies.join(", ")} 
-              </div>
-            )}
-          </Card>
-        </Link>
+          <div
+            className="relative group block h-full w-full cursor-pointer"
+            onMouseEnter={() => setHoveredIndex(idx)}
+            onMouseLeave={() => setHoveredIndex(null)}
+          >
+            <div className="relative h-full w-full rounded-xl overflow-hidden">
+              <AnimatePresence>
+                {hoveredIndex === idx && (
+                  <motion.span
+                    className="absolute inset-0 h-full w-full bg-primary/10 block rounded-xl z-10"
+                    layoutId="hoverBackground"
+                    initial={{ opacity: 0 }}
+                    animate={{
+                      opacity: 1,
+                      transition: { duration: 0.15 },
+                    }}
+                    exit={{
+                      opacity: 0,
+                      transition: { duration: 0.15, delay: 0.2 },
+                    }}
+                  />
+                )}
+              </AnimatePresence>
+              <Card>
+                <CardContent>
+                  <div className="flex justify-between items-center mb-4">
+                    <div className="p-2 bg-dark-light/50 rounded-xl">
+                      {item.Icon2 && <item.Icon2 className="text-secondary text-xl" />}
+                    </div>
+                    <div>
+                      {item.Icon1 && (
+                        <Link 
+                          href={item.link} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="text-light-gray hover:text-primary transition-colors duration-300 inline-block"
+                        >
+                          <item.Icon1 className="text-xl" />
+                        </Link>
+                      )}
+                    </div>
+                  </div>
+                  <CardTitle>
+                    <Link 
+                      href={item.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-primary transition-colors duration-300"
+                    >
+                      {item.title}
+                    </Link>
+                  </CardTitle>
+                  <CardDescription>{item.description}</CardDescription>
+                  {item.technologies && (
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {item.technologies.map((tech, i) => (
+                        <span 
+                          key={i} 
+                          className="px-2 py-1 text-xs rounded-full bg-dark-light/50 text-light-gray"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </motion.div>
       ))}
     </div>
   );
@@ -85,16 +121,31 @@ export const Card = ({
   return (
     <div
       className={cn(
-        "card-shape rounded-2xl h-full w-full p-3 sm:p-4 overflow-hidden bg-gray-dark border border-transparent group-hover:border-slate-700 relative z-20",
+        "rounded-xl h-full w-full bg-dark-light/30 border border-dark-light/50 overflow-hidden group-hover:border-primary/50 transition-all duration-300 group-hover:shadow-md group-hover:shadow-primary/5",
         className
       )}
     >
-      <div className="relative z-50">
-        <div className="p-2 sm:p-4">{children}</div>
+      <div className="relative h-full">
+        <div className="p-6 h-full">{children}</div>
       </div>
     </div>
   );
 };
+
+export const CardContent = ({
+  className,
+  children,
+}: {
+  className?: string;
+  children: React.ReactNode;
+}) => {
+  return (
+    <div className={cn("relative h-full flex flex-col", className)}>
+      {children}
+    </div>
+  );
+};
+
 export const CardTitle = ({
   className,
   children,
@@ -103,11 +154,12 @@ export const CardTitle = ({
   children: React.ReactNode;
 }) => {
   return (
-    <h4 className={cn("card-title text-light text-xl sm:text-2xl font-bold tracking-wide mt-2 sm:mt-4", className)}>
+    <h4 className={cn("text-xl font-semibold mb-2 text-light group-hover:text-primary transition-colors duration-300", className)}>
       {children}
     </h4>
   );
 };
+
 export const CardDescription = ({
   className,
   children,
@@ -118,7 +170,7 @@ export const CardDescription = ({
   return (
     <p
       className={cn(
-        "card-desc mt-2 sm:mt-4 text-light-gray text-sm sm:text-base tracking-wide leading-relaxed",
+        "text-light-gray text-sm flex-grow",
         className
       )}
     >
@@ -126,3 +178,4 @@ export const CardDescription = ({
     </p>
   );
 };
+

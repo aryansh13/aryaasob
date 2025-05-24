@@ -14,12 +14,13 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       colors: {
-        "green-light": "#64ffda",
-        "light" : "#ccd6f6",
-        "dark" : "#0a192f",
-        "light-gray" : "#8892b0",
-        "dark-gray" : "#1d2e4b",
-        "gray-dark" : "#112240",
+        "primary": "#4f46e5", // Indigo
+        "primary-light": "#818cf8",
+        "secondary": "#10b981", // Emerald
+        "dark": "#0f172a", // Slate-900
+        "dark-light": "#1e293b", // Slate-800
+        "light": "#f8fafc", // Slate-50
+        "light-gray": "#94a3b8", // Slate-400
       },
       space: {
         128: "32rem",
@@ -34,7 +35,21 @@ const config: Config = {
       },
       listStyleType: {
         triangle: "▹",
-      },  
+      },
+      animation: {
+        "gradient": "gradient 8s linear infinite",
+        "float": "float 3s ease-in-out infinite",
+      },
+      keyframes: {
+        gradient: {
+          "0%, 100%": { backgroundPosition: "0% 50%" },
+          "50%": { backgroundPosition: "100% 50%" },
+        },
+        float: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-10px)" },
+        },
+      },
     },
     fontSize: {
       xs: "0.75rem",

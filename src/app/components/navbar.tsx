@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { SiMinutemailer, SiGithub, SiLinkedin, SiInstagram } from "react-icons/si";
 import { HiMenu, HiX } from "react-icons/hi";
+import { motion } from "framer-motion";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -31,9 +32,16 @@ export default function Navbar() {
     },
   ];
 
+  const navItems = [
+    { name: "Home", href: "#home" },
+    { name: "About", href: "#about" },
+    { name: "Experience", href: "#experience" },
+    { name: "Projects", href: "#projects" },
+  ];
+
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 0) {
+      if (window.scrollY > 20) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
@@ -51,37 +59,106 @@ export default function Navbar() {
   };
 
   return (
-    <div className={`navbar sticky top-0 flex flex-wrap px-4 py-3 items-center z-[100] ${isScrolled ? 'shadow-md' : ''} transition-shadow bg-dark`}>
-      <div className="flex items-center justify-between w-full lg:w-auto">
-        <Link className="text-xl font-bold" href={"/"}>Arya As</Link>
+    <motion.nav 
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className={`fixed w-full top-0 z-50 px-4 sm:px-6 py-4 transition-all duration-300 backdrop-blur-md ${
+        isScrolled 
+          ? 'bg-dark/90 shadow-lg' 
+          : 'bg-transparent'
+      }`}
+    >
+      <div className="max-w-7xl mx-auto flex items-center justify-between">
+        <Link 
+          href="/" 
+          className="text-xl font-bold bg-gradient-text transition-all duration-300 hover:opacity-80"
+        >
+          Arya As
+        </Link>
+
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex items-center space-x-1">
+          {navItems.map((item, index) => (
+            <a 
+              key={index}
+              href={item.href} 
+              className="nav-link"
+            >
+              {item.name}
+            </a>
+          ))}
+        </div>
+
+        {/* Social Icons - Desktop */}
+        <div className="hidden md:flex items-center space-x-4">
+          {socials.map((social, index) => {
+            const Icon = social.Icon;
+            return (
+              <Link 
+                href={social.Link} 
+                key={index} 
+                aria-label={social.Label}
+                className="social-icon"
+              >
+                <Icon />
+              </Link>
+            )
+          })}
+        </div>
+
+        {/* Mobile Menu Button */}
         <button
-          className="lg:hidden text-light hover:text-green-light"
+          className="md:hidden text-light hover:text-primary-light"
           onClick={toggleMobileMenu}
           aria-label="Toggle menu"
         >
-          {mobileMenuOpen ? <HiX className="text-2xl" /> : <HiMenu className="text-2xl" />}
+          {mobileMenuOpen ? 
+            <HiX className="text-2xl" /> : 
+            <HiMenu className="text-2xl" />
+          }
         </button>
       </div>
 
-      <div className={`${mobileMenuOpen ? 'flex' : 'hidden'} lg:flex flex-col lg:flex-row w-full lg:w-auto lg:ml-6 mt-4 lg:mt-0`}>
-        <div className="flex flex-col lg:flex-row space-y-2 lg:space-y-0 lg:space-x-4 font-semibold">
-          <a href='#home' className='hover:text-green-light' onClick={() => setMobileMenuOpen(false)}>Home</a>
-          <a href='#about' className='hover:text-green-light' onClick={() => setMobileMenuOpen(false)}>About</a>
-          <a href='#experience' className='hover:text-green-light' onClick={() => setMobileMenuOpen(false)}>Experience</a>
-          <a href='#projects' className='hover:text-green-light' onClick={() => setMobileMenuOpen(false)}>Projects</a>
-        </div>
-      </div>
+      {/* Mobile Menu */}
+      {mobileMenuOpen && (
+        <motion.div
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: "auto" }}
+          exit={{ opacity: 0, height: 0 }}
+          transition={{ duration: 0.3 }}
+          className="md:hidden bg-dark-light mt-4 rounded-lg overflow-hidden shadow-lg"
+        >
+          <div className="flex flex-col p-4 space-y-3">
+            {navItems.map((item, index) => (
+              <a 
+                key={index}
+                href={item.href} 
+                className="nav-link block py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {item.name}
+              </a>
+            ))}
 
-      <div className={`${mobileMenuOpen ? 'flex' : 'hidden'} lg:flex lg:ml-auto mt-4 lg:mt-0 space-x-4 navbar-icon`}>
-        {socials.map((social, index) => {
-          const Icon = social.Icon;
-          return (
-            <Link href={social.Link} key={index} aria-label={social.Label}>
-              <Icon className='text-xl hover:text-green-light icon'/>
-            </Link>
-          )
-        })}
-      </div>
-    </div>
+            <div className="flex pt-4 space-x-4 border-t border-gray-700">
+              {socials.map((social, index) => {
+                const Icon = social.Icon;
+                return (
+                  <Link 
+                    href={social.Link} 
+                    key={index} 
+                    aria-label={social.Label}
+                    className="social-icon"
+                  >
+                    <Icon />
+                  </Link>
+                )
+              })}
+            </div>
+          </div>
+        </motion.div>
+      )}
+    </motion.nav>
   );
 }
