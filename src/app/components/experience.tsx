@@ -9,6 +9,17 @@ export default function Experience() {
 
     const sections = [
         { 
+            id: "BRAINCORE", 
+            name: "Braincore", 
+            role: "Web Developer", 
+            date: "Sept 2024 - Januari 2025", 
+            details: [
+                "Designed the entire website layout using Figma and fully implemented the Front-End (100%).",
+                "Developed the complete Back-End, including database creation and system architecture (100%).",
+                "Successfully integrated the Back-End with an LLM-based machine learning model to enhance system functionality (100%)."
+            ] 
+        },
+        { 
             id: "ECC.CO.ID", 
             name: "Ecc.co.id", 
             role: "Full-Stack Developer", 
