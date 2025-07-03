@@ -63,19 +63,12 @@ export default function About() {
           >
             <p className="mb-6">
               I&apos;m currently a
-              <span className="font-semibold text-light"> FullStack Developer Intern </span>
-              at{" "}
-              <span className="text-secondary font-semibold">
-                PT. Baracipta Esa Engineering
-              </span>
-              , working with the Ecc.co.id team as part of the campus internship
-              program called
-              <span className="font-semibold text-light"> MSIB Batch 6 2024</span>. 
+              <span className="font-semibold text-light"> FullStack Developer Freelancer </span>
+                with strong passion in full-stack web development.
             </p>
             <p className="mb-6">
-              At the same time, I&apos;m pursuing a
-              <span className="font-semibold text-light"> Bachelor&apos;s Degree </span> in{" "}
-              <span className="font-semibold text-light">Computer Engineering Technology</span>{" "}
+              At the same time, I&apos;m a final-year
+              <span className="font-semibold text-light"> Computer Engineering Technology student </span>
               at{" "}
               <span className="text-secondary font-semibold">
                 Semarang State Polytechnic
